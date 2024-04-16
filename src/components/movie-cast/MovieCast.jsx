@@ -3,6 +3,10 @@ import { useParams } from 'react-router-dom';
 import { getMovieCredits, IMAGE_BASE_URL } from '../../api/movie-api';
 import css from './MovieCast.module.css';
 
+const defaultImg =
+  '<https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/' +
+  '95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg>';
+
 const MovieCast = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -12,6 +16,7 @@ const MovieCast = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!params.movieId) return;
       setLoading(true);
       setError(false);
 
@@ -36,7 +41,7 @@ const MovieCast = () => {
             return (
               <li key={actor.id} className={css.card}>
                 <img
-                  src={`${IMAGE_BASE_URL}${actor.profile_path}`}
+                  src={actor.profile_path ? `${IMAGE_BASE_URL}${actor.profile_path}` : defaultImg}
                   alt={actor.name}
                   className={css.img}
                 />

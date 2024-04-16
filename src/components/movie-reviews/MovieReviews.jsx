@@ -12,6 +12,7 @@ const MovieReviews = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!params.movieId) return;
       setLoading(true);
       setError(false);
 
