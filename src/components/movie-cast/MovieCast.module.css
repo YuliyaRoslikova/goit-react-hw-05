@@ -1,0 +1,11 @@
+.container {
+    font-size: 10px;
+}
+
+.card:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.img {
+    width: 70px;
+}
